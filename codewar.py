@@ -1193,7 +1193,7 @@ def count_sheep(n):
     return ''.join(f"{i} sheep..." for i in range(1, n + 1))
 
 
-assert(count_sheep(3)) == '1 sheep...2 sheep...3 sheep...'
+assert (count_sheep(3)) == '1 sheep...2 sheep...3 sheep...'
 
 
 def vowel_indices(word):
@@ -1214,3 +1214,31 @@ assert (vowel_indices("apple")) == [1, 5]
 assert (vowel_indices("UNDISARMED")) == [1, 4, 6, 9]
 assert vowel_indices('supercalifragilisticexpialidocious') == [2, 4, 7, 9, 12, 14, 16, 19, 21, 24, 25, 27, 29, 31,
                                                                32, 33]
+
+
+def solution(s):
+    """Split Strings
+    https://www.codewars.com/kata/515de9ae9dcfc28eb6000001/train/python
+    """
+    res = []
+    if len(s) % 2 != 0:
+        s += '_'
+    for i in range(0, len(s), 2):
+        res.append(s[i:i + 2])
+    return res
+
+
+assert solution("asdfads") == ['as', 'df', 'ad', 's_']
+
+
+def sort_array(source_array):
+    """Sort the odd
+    https://www.codewars.com/kata/578aa45ee9fd15ff4600090d/train/python"""
+    result = sorted([l for l in source_array if l % 2 == 1])
+    for index, item in enumerate(source_array):
+        if item % 2 == 0:
+            result.insert(index, item)
+    return result
+
+
+assert sort_array([5, 3, 2, 8, 1, 4]) == [1, 3, 2, 8, 5, 4]
