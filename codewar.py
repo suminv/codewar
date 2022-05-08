@@ -1,6 +1,8 @@
 import math
 import collections
-from unittest import case
+import itertools
+from datetime import datetime
+import string
 
 
 def abbrev_name(name):
@@ -1242,3 +1244,209 @@ def sort_array(source_array):
 
 
 assert sort_array([5, 3, 2, 8, 1, 4]) == [1, 3, 2, 8, 5, 4]
+
+
+def no_space(x):
+    """Remove String Spaces
+    """
+    return ''.join(x.split(' '))
+
+
+assert no_space('8 j 8   mBliB8g  imjB8B8  jl  B') == '8j8mBliB8gimjB8B8jlB'
+
+
+def first_non_consecutive(arr):
+    for i, j in enumerate(arr, arr[0]):
+        if i != j:
+            return j
+
+
+assert first_non_consecutive([1, 2, 3, 4, 6, 7, 8]) == 6
+assert first_non_consecutive([1, 2, 3, 4, 5, 6, 7, 8]) is None
+assert first_non_consecutive([4, 6, 7, 8, 9, 11]) == 6
+
+
+def merge_arrays(arr1, arr2):
+    """Merge two sorted arrays into one"""
+
+    return sorted(set(arr1 + arr2))
+
+
+assert merge_arrays([1, 2, 3, 4], [5, 6, 7, 8]) == [1, 2, 3, 4, 5, 6, 7, 8]
+assert merge_arrays([1, 3, 5, 7, 9, 11, 12], [1, 2, 3, 4, 5, 10, 12]) == [1, 2, 3, 4, 5, 7, 9, 10, 11, 12]
+
+
+def usdcny(usd):
+    """Create a function that converts US dollars (USD) to Chinese Yuan (CNY) . The input is the amount of USD as an
+    integer, and the output should be a string that states the amount of Yuan followed by 'Chinese Yuan'
+
+    """
+    return f"{(usd * 6.75):.2f} Chinese Yuan"
+
+
+assert usdcny(465) == "3138.75 Chinese Yuan"
+
+
+def aspect_ratio(x: int, y: int):
+    """Aspect Ratio Cropping - Part 1"""
+    return math.ceil(y * 16 / 9), y
+
+
+assert aspect_ratio(640, 480) == (854, 480)
+
+
+def pillars(num_pill, dist, width):
+    """Pillars"""
+    if num_pill < 2:
+        return 0
+
+    return num_pill * ((dist * 100) + width) - (width * 2) - (dist * 100)
+
+
+assert pillars(2, 20, 25) == 2000
+assert pillars(11, 15, 30) == 15270
+
+
+def is_palindrome(s):
+    """Write a function that checks if a given string (case insensitive) is a palindrome."""
+
+    return s.lower() == s.lower()[::-1]
+
+
+assert is_palindrome('aba') == True
+assert is_palindrome('Abba') == True
+assert is_palindrome('malam') == True
+assert is_palindrome('walter') == False
+
+
+def is_today(date):
+    return date.date() == datetime.today().date()
+
+
+assert is_today(datetime(2020, 10, 1, 1, 1, 1, 1)) == False
+
+
+def each_cons(lst, n):
+    mas = []
+    for i in range(len(lst) - n + 1):
+        mas.append(lst[i:i + n])
+    return mas
+
+
+lst = [3, 5, 8, 13]
+
+
+# assert (each_cons(lst, 2)) == [[3, 5, 8], [5, 8, 13]]
+
+
+def bingo(array):
+    """Bingo ( Or Not )"""
+    win = sorted([2, 9, 14, 7, 15])
+    res = []
+    alfa = {
+        'a': 1,
+        'b': 2,
+        'c': 3,
+        'd': 4,
+        'e': 5,
+        'f': 6,
+        'g': 7,
+        'h': 8,
+        'i': 9,
+        'j': 10,
+        'k': 11,
+        'l': 12,
+        'm': 13,
+        'n': 14,
+        'o': 15,
+        'p': 16,
+        'q': 17,
+        'r': 18,
+        's': 19,
+        't': 20,
+        'u': 21,
+        'v': 22,
+        'w': 23,
+        'x': 24,
+        'y': 25,
+        'z': 26
+    }
+
+    for i in array:
+        if i in win:
+            res.append(i)
+    if list(set(res)) == win:
+        return 'WIN'
+    return 'LOSE'
+
+
+# return "WIN" if {2, 7, 9, 14, 15}.issubset(set(array)) else "LOSE"
+
+
+assert bingo([20, 12, 23, 14, 6, 22, 12, 17, 2, 26]) == "LOSE"
+assert bingo([1, 2, 3, 7, 5, 14, 7, 15, 9, 10]) == "WIN"
+
+
+def solve(s):
+    """Simple string characters"""
+    count_upper = 0
+    count_lower = 0
+    count_number = 0
+    count_special = 0
+
+    for i in s:
+        if i.isupper():
+            count_upper += 1
+        elif i.islower():
+            count_lower += 1
+        elif i.isnumeric():
+            count_number += 1
+        elif i in string.punctuation:
+            count_special += 1
+
+    return [count_upper, count_lower, count_number, count_special]
+
+
+assert solve("*'&ABCDabcde12345") == [4, 5, 5, 3]
+
+
+def find_difference(a, b):
+    """Difference of Volumes of Cuboids"""
+    return abs(math.prod(a) - math.prod(b))
+
+
+assert find_difference([3, 2, 5], [1, 4, 4]) == 14
+
+
+def double_char(s):
+    """Double Char"""
+    res = ''
+    for i in s:
+        res += i * 2
+    return res
+
+    # return ''.join(c * 2 for c in s)
+
+
+assert double_char("String") == "SSttrriinngg"
+
+
+def between(a, b):
+    """What is between?"""
+    return [res for res in range(a, b + 1)]
+
+    # return list(range(a,b+1))
+
+
+def delete_nth(order, max_e):
+    """Delete occurrences of an element if it occurs more than n times"""
+
+    res = []
+
+    for i in order:
+        if res.count(i) < max_e:
+            res.append(i)
+    return res
+
+
+assert delete_nth([1, 1, 3, 3, 7, 2, 2, 2, 2], 3) == [1, 1, 3, 3, 7, 2, 2, 2]
