@@ -1,8 +1,7 @@
-import math
 import collections
-import itertools
-from datetime import datetime
+import math
 import string
+from datetime import datetime
 
 
 def abbrev_name(name):
@@ -604,7 +603,8 @@ assert (duplicate_count("Indivisibilities")) == 2
 
 
 def even_or_odd(number):
-    '''Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd numbers.'''
+    """Create a function that takes an integer as an argument and returns "Even" for even numbers or "Odd" for odd
+    numbers. """
     return 'Even' if number % 2 == 0 else 'Odd'
 
 
@@ -1450,3 +1450,118 @@ def delete_nth(order, max_e):
 
 
 assert delete_nth([1, 1, 3, 3, 7, 2, 2, 2, 2], 3) == [1, 1, 3, 3, 7, 2, 2, 2]
+
+
+def define_suit(card):
+    val = {
+        'C': 'clubs',
+        'D': 'diamonds',
+        'H': 'hearts',
+        'S': 'spades',
+    }
+    return val[card[-1]]
+
+
+assert define_suit('3C') == 'clubs'
+assert define_suit('3S') == 'spades'
+
+
+def sum_str(a, b):
+    """Sum The Strings"""
+    if a.isdigit() and b.isdigit():
+        return str(int(a) + int(b))
+    elif len(a) == 0 and len(b) == 0:
+        return '0'
+    elif len(a) == 0 and b.isdigit():
+        return b
+    elif len(b) == 0 and a.isdigit():
+        return a
+
+
+#   return str(int(a or 0) + int(b or 0))
+
+
+assert (sum_str('481693', '202083')) == '683776'
+assert sum_str("", "") == "0"
+assert sum_str("9", "") == "9"
+assert sum_str("", "5") == "5"
+
+
+def dont_give_me_five(start, end):
+    """Don't give me five!"""
+    res = 0
+    for i in range(start, end + 1):
+        if '5' not in str(i):
+            res += 1
+    return res
+    # return sum('5' not in str(i) for i in range(start, end + 1))
+
+
+assert dont_give_me_five(1, 9) == 8
+assert dont_give_me_five(4, 17) == 12
+
+
+def high(x):
+    """Highest Scoring Word"""
+    keys = []
+    values = []
+
+    for word in x.split():
+        score = 0
+        keys.append(word)
+
+        for letter in word:
+            score += (ord(letter)) - 96
+        values.append(score)
+
+    res = dict(zip(keys, values))
+    max_Score = max(res.values())
+
+    for k, v in res.items():
+        if v == max_Score:
+            return k
+
+
+assert high('man i need a taxi up to ubud') == 'taxi'
+
+
+def find_children(dancing_brigade):
+    """Where is my parent!?(cry)
+    https://www.codewars.com/kata/58539230879867a8cd00011c/train/python
+    """
+    res = []
+    for i in sorted(dancing_brigade.lower()):
+        if i.upper() not in res:
+            res.append(i.upper())
+        else:
+            res.append(i)
+
+    return ''.join(res)
+
+
+assert find_children("AaaaaZazzz") == "AaaaaaZzzz"
+
+
+def hex_to_dec(s):
+    """Hex to Decimal"""
+    return int(s, 16)
+
+
+assert hex_to_dec("10") == 16
+
+
+def to_alternating_case(string: str):
+    """altERnaTIng cAsE <=> ALTerNAtiNG CaSe"""
+    res = []
+    for letter in string:
+        if letter == letter.upper():
+            res.append(letter.lower())
+        elif letter == letter.lower():
+            res.append(letter.upper())
+
+    return ''.join(res)
+    # return string.swapcase()
+
+
+assert to_alternating_case("1a2b3c4d5e") == "1A2B3C4D5E"
+assert to_alternating_case("String.prototype.toAlternatingCase") == "sTRING.PROTOTYPE.TOaLTERNATINGcASE"
