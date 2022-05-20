@@ -1684,3 +1684,4 @@ def is_uppercase(inp):
 assert is_uppercase("hello I AM DONALD") == False
 assert is_uppercase("HELLO I AM DONALD") == True
 assert is_uppercase("$%&") == True
+
