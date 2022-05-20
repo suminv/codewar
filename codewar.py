@@ -1565,3 +1565,46 @@ def to_alternating_case(string: str):
 
 assert to_alternating_case("1a2b3c4d5e") == "1A2B3C4D5E"
 assert to_alternating_case("String.prototype.toAlternatingCase") == "sTRING.PROTOTYPE.TOaLTERNATINGcASE"
+
+def rental_car_cost(d):
+    """Transportation on vacation"""
+    result = d * 40
+    if d >= 7:
+        result -= 50
+    elif d >= 3:
+        result -= 20
+    return result
+
+assert rental_car_cost(1) == 40
+assert rental_car_cost(4) ==140
+assert rental_car_cost(7) ==230
+assert rental_car_cost(8) == 270
+
+
+def switch_it_up(number):
+    """Switch it Up!"""
+    match number:
+        case 0:
+            return "Zero"
+        case 1:
+            return "One"
+        case 2:
+            return "Two"
+        case 3:
+            return "Three"
+        case 4:
+            return "Four"
+        case 5:
+            return "Five"
+        case 6:
+            return "Six"
+        case 7:
+            return "Seven"
+        case 8:
+            return "Eight"
+        case 9:
+            return "Nine"            
+    # return ["Zero", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine"][number]
+
+assert switch_it_up(0) == "Zero"
+assert switch_it_up(9) == "Nine"
