@@ -1565,3 +1565,122 @@ def to_alternating_case(string: str):
 
 assert to_alternating_case("1a2b3c4d5e") == "1A2B3C4D5E"
 assert to_alternating_case("String.prototype.toAlternatingCase") == "sTRING.PROTOTYPE.TOaLTERNATINGcASE"
+
+
+def to_jaden_case(s: str):
+    """Jaden Casing Strings"""
+    return string.capwords(s)
+
+
+quote = "How can mirrors be real if our eyes aren't real"
+assert to_jaden_case(quote) == "How Can Mirrors Be Real If Our Eyes Aren't Real"
+
+
+def solution(nums=None):
+    """Sort Numbers"""
+    if nums is None:
+        return []
+    return [i for i in sorted(nums)]
+
+
+assert solution([1, 2, 3, 10, 5]) == [1, 2, 3, 5, 10]
+
+
+# assert (solution(None)) == []
+
+
+def direction(facing, turn):
+    compass = ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW']
+    return compass[(compass.index(facing) + turn // 45) % 8]
+
+
+assert (direction("S", 180)) == "N"
+assert (direction("SE", -45)) == "E"
+assert (direction("W", 495)) == "NE"
+
+
+def sum_mul(n, m):
+    """Sum of Multiples"""
+    if m > 0 and n > 0:
+        return sum(range(n, m, n))
+    else:
+        return 'INVALID'
+
+
+assert sum_mul(2, 9) == 20
+assert sum_mul(0, 0) == 'INVALID'
+assert sum_mul(4, -7) == 'INVALID'
+
+
+def reverseWords(str):
+    """Reversed Words"""
+    return " ".join(str.split(" ")[::-1])
+
+
+assert reverseWords("The greatest victory is that which requires no battle") == "battle no requires which that is " \
+                                                                                "victory greatest The"
+
+
+def remove(s):
+    return s.strip('!')
+
+
+assert remove("Hi! Hi!") == "Hi! Hi"
+
+
+def weather_info(temperature):
+    c = convert_to_celsius(temperature)
+    if c < 0:
+        return f'{c} is freezing temperature'
+    else:
+        return f'{c} is above freezing temperature'
+
+
+def convert_to_celsius(temperature):
+    return (temperature - 32) * (5 / 9)
+
+
+assert weather_info(50) == '10.0 is above freezing temperature'
+assert weather_info(23) == '-5.0 is freezing temperature'
+
+
+def greet(language):
+    dic = {
+        'english': 'Welcome',
+        'czech': 'Vitejte',
+        'danish': 'Velkomst',
+        'dutch': 'Welkom',
+        'estonian': 'Tere tulemast',
+        'finnish': 'Tervetuloa',
+        'flemish': 'Welgekomen',
+        'french': 'Bienvenue',
+        'german': 'Willkommen',
+        'irish': 'Failte',
+        'italian': 'Benvenuto',
+        'latvian': 'Gaidits',
+        'lithuanian': 'Laukiamas',
+        'polish': 'Witamy',
+        'spanish': 'Bienvenido',
+        'swedish': 'Valkommen',
+        'welsh': 'Croeso'
+    }
+    if language in dic:
+        return dic[language]
+    else:
+        return 'Welcome'
+
+
+assert (greet('english')) == 'Welcome'
+assert (greet('dutch')) == 'Welkom'
+assert (greet('IP_ADDRESS_INVALID')) == 'Welcome'
+
+
+def is_uppercase(inp):
+    """Is the string uppercase?"""
+    return inp == inp.upper()
+
+
+
+assert is_uppercase("hello I AM DONALD") == False
+assert is_uppercase("HELLO I AM DONALD") == True
+assert is_uppercase("$%&") == True
