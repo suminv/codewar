@@ -1680,8 +1680,69 @@ def is_uppercase(inp):
     return inp == inp.upper()
 
 
-
 assert is_uppercase("hello I AM DONALD") == False
 assert is_uppercase("HELLO I AM DONALD") == True
 assert is_uppercase("$%&") == True
 
+
+def remove_1(s):
+    return s.replace('!', '') + '!'
+
+
+assert (remove_1('!Hi!')) == 'Hi!'
+
+
+def shortcut(s):
+    vowels = ["a", "e", "i", "o", 'u']
+    return ''.join([letter for letter in s if letter not in vowels])
+
+
+assert (shortcut("codewars")) == "cdwrs"
+
+
+def get_char(c):
+    return chr(c)
+
+
+assert get_char(65) == 'A'
+
+
+def in_array(array1, array2):
+    """6 kyu Which are in?"""
+    res = []
+    for i in array1:
+        for x in array2:
+            if i in x:
+                res.append(i)
+    return sorted(set(res))
+
+
+array1 = ["live", "arp", "strong"]
+array2 = ["lively", "alive", "harp", "sharp", "armstrong"]
+assert in_array(array1, array2) == ['arp', 'live', 'strong']
+
+
+def how_much_i_love_you(nb_petals):
+    """ 8kyu I love you, a little , a lot, passionately ... not at all"""
+    return ["not at all", "I love you", "a little", "a lot", "passionately", "madly"][nb_petals % 6]
+
+
+assert how_much_i_love_you(7) == "I love you"
+assert how_much_i_love_you(6) == "not at all"
+
+
+def sum_of_differences(arr):
+    """8kyu Sum of differences in array"""
+    arr.sort(reverse=True)
+
+    sum = 0
+    dif = 0
+    for i in range(len(arr) - 1):
+        dif = arr[i] - arr[i + 1]
+        sum += dif
+    return sum
+
+
+assert sum_of_differences([1, 2, 10]) == 9
+assert sum_of_differences([-3, -2, -1]) == 2
+assert sum_of_differences([1, 1, 1, 1, 1]) == 0
