@@ -1,3 +1,4 @@
+import base64
 import collections
 import math
 import string
@@ -1746,3 +1747,10 @@ def sum_of_differences(arr):
 assert sum_of_differences([1, 2, 10]) == 9
 assert sum_of_differences([-3, -2, -1]) == 2
 assert sum_of_differences([1, 1, 1, 1, 1]) == 0
+
+
+def hex_to_base64(hex: str) -> str:
+    """6kyu Hex to base64 """
+    decode = base64.b16decode(hex, casefold=True)
+    encode = base64.b64encode(decode).decode('utf-8')
+    return encode
