@@ -1754,3 +1754,47 @@ def hex_to_base64(hex: str) -> str:
     decode = base64.b16decode(hex, casefold=True)
     encode = base64.b64encode(decode).decode('utf-8')
     return encode
+
+
+def is_divisible(n, x, y):
+    """8 kyu Is n divisible by x and y? """
+    return n % x == 0 and n % y == 0
+
+
+assert is_divisible(3, 2, 2) == False
+assert is_divisible(12, 3, 4) == True
+
+
+def paperwork(n, m):
+    """8 kyu Beginner Series #1 School Paperwork"""
+    if n < 0 or m < 0:
+        return 0
+    return n * m
+
+
+assert paperwork(5, 5) == 25
+assert paperwork(-5, 5) == 0
+
+
+def get_grade(s1, s2, s3):
+    """8 kyu Grasshopper - Grade book"""
+    avg = (s1 + s2 + s3) / 3
+    if 90 <= avg <= 100:
+        return 'A'
+    elif 80 <= avg < 90:
+        return 'B'
+    elif 70 <= avg < 80:
+        return 'C'
+    elif 60 <= avg < 70:
+        return 'D'
+    elif 0 <= avg < 60:
+        return 'F'
+
+
+def twice_as_old(dad_years_old, son_years_old):
+    """8 kyu Twice as old"""
+    return abs(dad_years_old - (son_years_old * 2))
+
+
+assert twice_as_old(36, 7) == 22
+assert twice_as_old(55, 30) == 5
