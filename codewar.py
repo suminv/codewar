@@ -1,8 +1,9 @@
-import base64
 import collections
 import math
 import string
 from datetime import datetime
+
+import numpy as np
 
 
 def abbrev_name(name):
@@ -1798,3 +1799,40 @@ def twice_as_old(dad_years_old, son_years_old):
 
 assert twice_as_old(36, 7) == 22
 assert twice_as_old(55, 30) == 5
+
+
+def are_coprime(n, m):
+    """7 kyu Coprime Validator"""
+    while m > 0:
+        n, m = m, n % m
+    return n == 1
+
+
+assert are_coprime(20, 27) == True
+assert are_coprime(12, 39) == False
+
+
+def transpose(matrix):
+    """6 kyu Matrix Transpose"""
+    return np.array(matrix).transpose().tolist()
+
+
+def say_hello(name, city, state):
+    """ 8 kyu Welcome to the City"""
+    name, city, state = name, city, state
+    return f'Hello, {" ".join(name)}! Welcome to {city}, {state}!'
+
+
+assert say_hello(['Wallace', 'Russel', 'Osbourne'], 'Albany',
+                 'New York') == 'Hello, Wallace Russel Osbourne! Welcome to ' \
+                                'Albany, New York!'
+
+
+def update_light(current):
+    """ 8kyu Thinkful - Logic Drills: Traffic light"""
+    return {"green": "yellow", "yellow": "red", "red": "green"}[current]
+
+
+assert update_light('green') == 'yellow'
+assert update_light('yellow') == 'red'
+assert update_light('red') == 'green'
