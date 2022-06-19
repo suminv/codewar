@@ -1836,3 +1836,28 @@ def update_light(current):
 assert update_light('green') == 'yellow'
 assert update_light('yellow') == 'red'
 assert update_light('red') == 'green'
+
+
+def sumDig_nthTerm(initVal: int, patternL: list, nthTerm: int):
+    """ 6kyu Reach Me and Sum my Digits """
+    term_n = initVal + sum([patternL[n % len(patternL)] for n in range(nthTerm - 1)])
+    return sum(list(map(int, str(term_n))))
+
+
+assert sumDig_nthTerm(10, [2, 1, 3], 6) == 10
+
+
+def expression_matter(a, b, c):
+    """8 kyu Expressions Matter"""
+    operations = [
+        a * (b + c),
+        a * b * c,
+        a + b * c,
+        (a + b) * c,
+        a + b + c
+    ]
+    return max(operations)
+
+
+assert expression_matter(2, 1, 2) == 6
+assert expression_matter(2, 1, 1) == 4
