@@ -1,5 +1,8 @@
+import base64
 import collections
 import math
+import random
+import re
 import string
 from datetime import datetime
 
@@ -7,8 +10,8 @@ import numpy as np
 
 
 def abbrev_name(name):
-    """Write a function to convert a name into initials. This kata strictly takes two words with one space in between them.
-    The output should be two capital letters with a dot separating them.
+    """Write a function to convert a name into initials. This kata strictly takes two words with one space in between
+    them. The output should be two capital letters with a dot separating them.
     """
     first = name[0].upper()
     last = name.split(" ")[1][0].upper()
@@ -52,7 +55,8 @@ find_needle(["hay", "junk", "hay", "hay", "moreJunk", "needle", "randomJunk"])
 
 def invert(lst):
     """
-    Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives become positives.
+    Given a set of numbers, return the additive inverse of each. Each positive becomes negatives, and the negatives
+    become positives.
 
     """
     result = []
@@ -75,11 +79,13 @@ assert invert([]) == []
 
 
 def points(games):
-    """Our football team finished the championship. The result of each match look like "x:y". Results of all matches are recorded in the collection.
+    """Our football team finished the championship. The result of each match look like "x:y". Results of all matches
+    are recorded in the collection.
 
     For example: ["3:1", "2:2", "0:1", ...]
 
-    Write a function that takes such collection and counts the points of our team in the championship. Rules for counting points for each match:
+    Write a function that takes such collection and counts the points of our team in the championship. Rules for
+    counting points for each match:
 
     if x>y - 3 points
     if x<y - 0 point
@@ -136,13 +142,15 @@ assert (past(1, 0, 0)) == 3600000
 
 
 def sum_array(arr):
-    """Sum all the numbers of a given array ( cq. list ), except the highest and the lowest element ( by value, not by index! ).
+    """Sum all the numbers of a given array ( cq. list ), except the highest and the lowest element ( by value,
+    not by index! ).
 
-    The highest or lowest element respectively is a single element at each edge, even if there are more than one with the same value.
+    The highest or lowest element respectively is a single element at each edge, even if there are more than one with
+    the same value.
 
     Mind the input validation."""
 
-    if arr == None or len(arr) < 3:
+    if arr is None or len(arr) < 3:
         return 0
     else:
         return sum(sorted(arr)[1:-1])
@@ -150,7 +158,10 @@ def sum_array(arr):
 
 def hero(bullets, dragons):
     """
-    A hero is on his way to the castle to complete his mission. However, he's been told that the castle is surrounded with a couple of powerful dragons! each dragon takes 2 bullets to be defeated, our hero has no idea how many bullets he should carry.. Assuming he's gonna grab a specific given number of bullets and move forward to fight another specific given number of dragons, will he survive?
+    A hero is on his way to the castle to complete his mission. However, he's been told that the castle is surrounded
+    with a couple of powerful dragons! each dragon takes 2 bullets to be defeated, our hero has no idea how many
+    bullets he should carry.. Assuming he's gonna grab a specific given number of bullets and move forward to fight
+    another specific given number of dragons, will he survive?
     """
     if bullets // dragons == 2:
         return True
@@ -158,7 +169,8 @@ def hero(bullets, dragons):
 
 
 def filter_list(l):
-    """In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out."""
+    """In this kata you will create a function that takes a list of non-negative integers and strings and returns a
+    new list with the strings filtered out. """
     return [i for i in l if type(i) == int]
 
 
@@ -169,7 +181,8 @@ assert (filter_list([1, 2, "aasf", "1", "123", 123])) == [1, 2, 123]
 
 def count_sheeps(sheep):
     """
-    Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts the number of sheep present in the array (true means present).
+    Consider an array/list of sheep where some sheep may be missing from their place. We need a function that counts
+    the number of sheep present in the array (true means present).
     """
     count = 0
     for i in sheep:
@@ -204,7 +217,9 @@ assert (DNA_strand("ATTGC")) == "TAACG"
 
 
 def nb_year(p0, percent, aug, p):
-    """In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by 2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the town need to see its population greater or equal to p = 1200 inhabitants?"""
+    """In a small town the population is p0 = 1000 at the beginning of a year. The population regularly increases by
+    2 percent per year and moreover 50 new inhabitants per year come to live in the town. How many years does the
+    town need to see its population greater or equal to p = 1200 inhabitants? """
     nb_year = 0
     while p0 < p:
         p0 = p0 + int(p0 * (percent / 100)) + aug
@@ -217,9 +232,9 @@ assert (nb_year(1500, 5, 100, 5000)) == 15
 
 def count_positives_sum_negatives(arr):
     """
-        Given an array of integers.
-    Return an array, where the first element is the count of positives numbers and the second element is sum of negative numbers. 0 is neither positive nor negative.
-    If the input array is empty or null, return an empty array.
+    Given an array of integers. Return an array, where the first element is the count of positives numbers and the
+    second element is sum of negative numbers. 0 is neither positive nor negative. If the input array is empty or
+    null, return an empty array.
     """
     pos = 0
     neg = []
@@ -264,7 +279,8 @@ assert (square_digits(9119)) == 811181
 
 
 def reverse_words(text):
-    """Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the string should be retained."""
+    """Complete the function that accepts a string parameter, and reverses each word in the string. All spaces in the
+    string should be retained. """
 
     new_text = ""
 
@@ -280,7 +296,8 @@ assert (
 
 
 def summation(num):
-    """Write a program that finds the summation of every number from 1 to num. The number will always be a positive integer greater than 0."""
+    """Write a program that finds the summation of every number from 1 to num. The number will always be a positive
+    integer greater than 0. """
 
     result = 0
     for x in range(1, num + 1):
@@ -376,8 +393,8 @@ assert (remove("Hi! Hi!")) == "Hi! Hi"
 
 
 def move_zeros(array):
-    """Description:
-    Write an algorithm that takes an array and moves all of the zeros to the end, preserving the order of the other elements.
+    """Description: Write an algorithm that takes an array and moves all of the zeros to the end, preserving the
+    order of the other elements.
     """
     for i in array:  # traverse the array
         if i == 0:  # checks if 'i' is equal to 0
@@ -415,7 +432,8 @@ assert (move_zeros([])) == []
 
 
 def lovefunc(flower1, flower2):
-    """Write a function that will take the number of petals of each flower and return true if they are in love and false if they aren't."""
+    """Write a function that will take the number of petals of each flower and return true if they are in love and
+    false if they aren't. """
 
     return flower1 % 2 != flower2 % 2
 
@@ -426,7 +444,8 @@ assert (lovefunc(2, 2)) == False
 def xo(s):
     # return s.lower().count('x') == s.lower().count('o')
 
-    """Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case insensitive. The string can contain any char."""
+    """Check to see if a string has the same amount of 'x's and 'o's. The method must return a boolean and be case
+    insensitive. The string can contain any char. """
     x = []
     ss = []
     for i in s.lower():
@@ -444,7 +463,9 @@ assert (xo("xxxxxoooxooo")) == True
 
 
 def is_isogram(string):
-    """An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram. Ignore letter case."""
+    """An isogram is a word that has no repeating letters, consecutive or non-consecutive. Implement a function that
+    determines whether a string that contains only letters is an isogram. Assume the empty string is an isogram.
+    Ignore letter case. """
     if len(string) == len(set(string.lower())):
         return True
     return False
@@ -480,7 +501,8 @@ assert (find_uniq([8, 8, 8, 8, 8, 8, 8, 7])) == 7
 def digital_root(n):
     """Digital root is the recursive sum of all the digits in a number.
 
-    Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way until a single-digit number is produced. The input will be a non-negative integer."""
+    Given n, take the sum of the digits of n. If that value has more than one digit, continue reducing in this way
+    until a single-digit number is produced. The input will be a non-negative integer. """
 
     if len(str(n)) == 1:
         return n
@@ -544,8 +566,8 @@ def are_you_playing_banjo(name):
 
 
 def count_bits(n):
-    """Description:
-    Write a function that takes an integer as input, and returns the number of bits that are equal to one in the binary representation of that number. You can guarantee that input is non-negative.
+    """Description: Write a function that takes an integer as input, and returns the number of bits that are equal to
+    one in the binary representation of that number. You can guarantee that input is non-negative.
 
     Example: The binary representation of 1234 is 10011010010, so the function should return 5 in this case
     """
@@ -576,7 +598,8 @@ def wave(people):
 
 
 def create_phone_number(n):
-    '''Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those numbers in the form of a phone number.'''
+    '''Write a function that accepts an array of 10 integers (between 0 and 9), that returns a string of those
+    numbers in the form of a phone number. '''
 
     row_num = ''.join(map(str, n))
 
@@ -587,7 +610,9 @@ assert (create_phone_number([1, 2, 3, 4, 5, 6, 7, 8, 9, 0])) == '(123) 456-7890'
 
 
 def duplicate_count(text):
-    '''Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (both uppercase and lowercase) and numeric digits.
+    '''Write a function that will return the count of distinct case-insensitive alphabetic characters and numeric
+    digits that occur more than once in the input string. The input string can be assumed to contain only alphabets (
+    both uppercase and lowercase) and numeric digits.
     '''
     result = collections.Counter(text.lower())
     count = 0
@@ -611,7 +636,8 @@ def even_or_odd(number):
 
 
 def pig_it(text):
-    '''Move the first letter of each word to the end of it, then add "ay" to    the end of the word. Leave punctuation marks untouched.'''
+    '''Move the first letter of each word to the end of it, then add "ay" to    the end of the word. Leave
+    punctuation marks untouched. '''
 
     pig_sentence = ''
     for word in text.split():
@@ -643,9 +669,9 @@ assert (pig_it_v2('Hello world !')) == 'elloHay orldway !'
 
 
 def friend(x):
-    '''Make a program that filters a list of strings and returns a list with only your friends name in it.
-    If a name has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's not...
-    Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"]'''
+    '''Make a program that filters a list of strings and returns a list with only your friends name in it. If a name
+    has exactly 4 letters in it, you can be sure that it has to be a friend of yours! Otherwise, you can be sure he's
+    not... Ex: Input = ["Ryan", "Kieran", "Jason", "Yous"], Output = ["Ryan", "Yous"] '''
     return [i for i in x if len(i) == 4]
 
 
@@ -653,7 +679,8 @@ assert (friend(["Ryan", "Kieran", "Mark", ]) == ["Ryan", "Mark"])
 
 
 def is_triangle(a, b, c):
-    '''Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can be built with the sides of given length and false in any other case.
+    '''Implement a function that accepts 3 integer values a, b, c. The function should return true if a triangle can
+    be built with the sides of given length and false in any other case.
 
     (In this case, all triangles must have surface greater than 0 to be accepted).'''
     return (a < b + c) and (b < a + c) and (c < a + b)
@@ -666,13 +693,16 @@ assert (is_triangle(1, 3, 2)) == False
 
 
 def two_sum(numbers, target):
-    '''
-    Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two different items in the array that, when added together, give the target value. The indices of these items should then be returned in a tuple like so: (index1, index2).
+    """
+    Write a function that takes an array of numbers (integers for the tests) and a target number. It should find two
+    different items in the array that, when added together, give the target value. The indices of these items should
+    then be returned in a tuple like so: (index1, index2).
 
     For the purposes of this kata, some tests may have multiple answers; any valid solutions will be accepted.
 
-    The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be numbers; target will always be the sum of two different items from that array).
-    '''
+    The input will always be valid (numbers will be an array of length 2 or greater, and all of the items will be
+    numbers; target will always be the sum of two different items from that array).
+    """
 
     for i in range(len(numbers)):
         for j in range(i + 1, len(numbers)):
@@ -685,7 +715,8 @@ assert (two_sum([1, 2, 3], 4)) == (0, 2)
 
 
 def unique_in_order(iterable):
-    '''Implement the function unique_in_order which takes as argument a sequence and returns a list of items without any elements with the same value next to each other and preserving the original order of elements.'''
+    """Implement the function unique_in_order which takes as argument a sequence and returns a list of items without
+    any elements with the same value next to each other and preserving the original order of elements. """
     res = []
     prev = None
     for i in iterable:
@@ -699,8 +730,9 @@ assert (unique_in_order('AAAABBBCCDAABBB')) == ['A', 'B', 'C', 'D', 'A', 'B']
 
 
 def valid_parentheses(string):
-    '''Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
-    '''
+    """Write a function that takes a string of parentheses, and determines if the order of the parentheses is valid.
+    The function should return true if the string is valid, and false if it's invalid.
+    """
     cnt = 0
     for char in string:
         if char == '(': cnt += 1
@@ -745,7 +777,8 @@ sequence(16)
 
 
 def powers_of_two(n):
-    '''Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2 with the exponent ranging from 0 to n ( inclusive ).
+    '''Complete the function that takes a non-negative integer n as input, and returns a list of all the powers of 2
+    with the exponent ranging from 0 to n ( inclusive ).
     '''
     res = []
     for i in range(0, n + 1):
@@ -774,8 +807,8 @@ def filter_long_words(sentence, n):
 
 
 def swap(string_):
-    '''Given a string, swap the case for each of the letters.
-    e.g. CodEwArs --> cODeWaRS'''
+    """Given a string, swap the case for each of the letters.
+    e.g. CodEwArs --> cODeWaRS"""
     s = ''
     for i in string_:
         if i.isupper():
@@ -792,7 +825,7 @@ assert swap('CodeWars') == 'cODEwARS'
 
 
 def domain_name(url):
-    '''Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:'''
+    """Write a function that when given a URL as a string, parses out just the domain name and returns it as a string. For example:"""
     return url.split('//')[-1].split('www.')[-1].split('.')[0]
 
 
@@ -836,10 +869,10 @@ assert (accum("ZpglnRxqenU")) == "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Ee
 
 def meeting(rooms):
     """
-    Your job at E-Corp is both boring and difficult. It isn't made any easier by the fact that everyone constantly wants to have a meeting with you, and that the meeting rooms are always taken!
-    In this kata, you will be given an array. Each value represents a meeting room. Your job? Find the first empty one and return its index (N.B. There may be more than one empty room in some test cases).
-    'X' --> busy
-    'O' --> empty
+    Your job at E-Corp is both boring and difficult. It isn't made any easier by the fact that everyone constantly
+    wants to have a meeting with you, and that the meeting rooms are always taken! In this kata, you will be given an
+    array. Each value represents a meeting room. Your job? Find the first empty one and return its index (N.B. There
+    may be more than one empty room in some test cases). 'X' --> busy 'O' --> empty
     """
     if 'O' in rooms:
         return rooms.index('O')
@@ -887,10 +920,9 @@ assert sticky_calc('+', 4, 7) == 54
 
 
 def gimme(input_array):
-    """As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of the numerical element that lies between the other two elements.
-    The input to the function will be an array of three distinct numbers (Haskell: a tuple).
-    For example:
-    gimme([2, 3, 1]) => 0"""""
+    """As a part of this Kata, you need to create a function that when provided with a triplet, returns the index of
+    the numerical element that lies between the other two elements. The input to the function will be an array of
+    three distinct numbers (Haskell: a tuple). For example: gimme([2, 3, 1]) => 0"" """
 
     middle = sorted(input_array)[1]
     return input_array.index(middle)
@@ -911,30 +943,10 @@ def longest(a1, a2):
 assert longest("aretheyhere", "yestheyarehere") == "aehrsty"
 
 
-def increment_string(strng):
-    """Your job is to write a function which increments a string, to create a new string.
-    If the string already ends with a number, the number should be incremented by 1.
-    If the string does not end with a number. the number 1 should be appended to the new string."""
-    stock_digit = []
-    stock_letter = ''
-    for i in list(strng):
-        if i.isdigit():
-            stock_digit.append(int(i))
-        # stock_letter += i
-
-    # print(stock_letter)
-    # print(stock_digit)
-
-    # return strng
-
-
-# assert increment_string("foo") == "foo1"
-# assert increment_string("foobar001") == "foobar002"
-# assert increment_string("foobar1") == "foobar2"
-
-
 def maskify(cc):
-    """Usually when you buy something, you're asked whether your credit card number, phone number or answer to your most secret question is still correct. However, since someone could look over your shoulder, you don't want that shown on your screen. Instead, we mask it.
+    """Usually when you buy something, you're asked whether your credit card number, phone number or answer to your
+    most secret question is still correct. However, since someone could look over your shoulder, you don't want that
+    shown on your screen. Instead, we mask it.
 
     Your task is to write a function maskify, which changes all but the last four characters into '#'.
 
@@ -976,8 +988,8 @@ assert string_clean("Dsa32 cdsc34232 csa!!! 1I 4Am cool!") == "Dsa cdsc csa!!! I
 
 def sum_pairs(ints, s):
     """
-    https://www.codewars.com/kata/54d81488b981293527000c8f/train/python
-    Given a list of integers and a single sum value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.
+    https://www.codewars.com/kata/54d81488b981293527000c8f/train/python Given a list of integers and a single sum
+    value, return the first two values (parse from the left please) in order of appearance that add up to form the sum.
     """
 
     d = set()
@@ -1861,3 +1873,110 @@ def expression_matter(a, b, c):
 
 assert expression_matter(2, 1, 2) == 6
 assert expression_matter(2, 1, 1) == 4
+
+
+def replace_dots(str):
+    """8 kyu  Replace all dots"""
+    return re.sub(r"\.", "-", str)
+
+
+class Ship:
+    """8 kyu Object Oriented Piracy"""
+
+    def __init__(self, draft, crew):
+        self.draft = draft
+        self.crew = crew
+
+    def is_worth_it(self):
+        return self.draft - (self.crew * 1.5) > 20
+
+
+Titanic = Ship(15, 10)  # False
+Titanic.is_worth_it()
+
+
+class Ghost(object):
+    def __init__(self):
+        self.color = random.choice(["white", "yellow", "purple", "red"])
+
+
+def ant_bridge(ants, terrain):
+    """5 kyuAnt Bridge"""
+    n_ants = len(ants)
+    terrain = terrain.replace('-.', '..')
+    terrain = terrain.replace('.-', '..')
+    count = terrain.count('.') % n_ants
+
+    return ants[-count:] + ants[:-count]
+
+
+def hoop_count(n):
+    if n >= 10:
+        return 'Great, now move on to tricks'
+    return 'Keep at it until you get it'
+
+
+def divisors(n):
+    """7 kyu Count the divisors of a number"""
+    res = set()
+    for i in range(1, int(n ** 0.5) + 1):
+        if n % i == 0:
+            res.add(i)
+            res.add(n // i)
+
+    return len(res)
+
+
+assert divisors(1) == 1
+assert divisors(4) == 3
+
+
+def simple_multiplication(number):
+    """8 kyu Simple multiplication"""
+    # return number * 8 if number % 2 == 0 else number * 9
+    if number % 2 == 0:
+        return number * 8
+    return number * 9
+
+
+def say_hello(name):
+    """ 8 kyu Grasshopper - Debug sayHello"""
+    return f'Hello, {name}'
+
+
+def six_toast(num):
+    """8 kyu BASIC: Making Six Toast."""
+    return abs(num - 6)
+
+
+assert six_toast(15) == 9
+assert six_toast(6) == 0
+assert six_toast(3) == 3
+
+
+def quarter_of(month):
+    return math.ceil(month / 3)
+
+
+assert quarter_of(3) == 1
+assert quarter_of(8) == 3
+assert quarter_of(11) == 4
+
+
+def bmi(weight, height):
+    bmi = weight / height ** 2
+    if bmi <= 18.5:
+        return 'Underweight'
+    elif bmi <= 25:
+        return "Normal"
+    elif bmi <= 30:
+        return "Overweight"
+    elif bmi > 30:
+        return "Obese"
+
+
+assert bmi(50, 1.80) == "Underweight"
+assert bmi(80, 1.80) == "Normal"
+assert bmi(90, 1.80) == "Overweight"
+assert bmi(110, 1.80) == "Obese"
+assert bmi(50, 1.50) == "Normal"
