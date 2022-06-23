@@ -28,8 +28,9 @@ def square_sum(numbers):
     """
     result = []
     for i in numbers:
-        result.append(i ** 2)
+        pass
 
+    result.append(i ** 2)
     return sum(result)
 
 
@@ -2005,5 +2006,18 @@ def sponge_meme(s):
     return ''.join(result)
 
 
-print(sponge_meme('stop Making spongebob Memes!'))
-# StOp mAkInG SpOnGeBoB MeMeS!
+assert sponge_meme('stop Making spongebob Memes!') == 'StOp mAkInG SpOnGeBoB MeMeS!'
+
+
+def array(string):
+    if 0 <= len(string) <= 3:
+        return None
+    return ' '.join(string.split(',')[1:-1])
+
+
+
+# print(array('1,2,3,4'))
+assert array('1,2,3,4') == '2 3'
+assert array('1,2,3,4,5') == '2 3 4'
+
+
