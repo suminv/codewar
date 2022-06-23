@@ -1980,3 +1980,30 @@ assert bmi(80, 1.80) == "Normal"
 assert bmi(90, 1.80) == "Overweight"
 assert bmi(110, 1.80) == "Obese"
 assert bmi(50, 1.50) == "Normal"
+
+
+def alternate(n, first_value, second_value):
+    # res = []
+    # for i in range(n):
+    #     res.append(first_value)
+    #     res.append(second_value)
+    #
+    # return res[0:n]
+    return [[first_value, second_value][i % 2] for i in range(n)]
+
+
+assert alternate(5, True, False) == [True, False, True, False, True]
+
+
+def sponge_meme(s):
+    result = []
+    for index, i in enumerate(s):
+        if index % 2 == 0:
+            result.append(i.upper())
+        else:
+            result.append(i.lower())
+    return ''.join(result)
+
+
+print(sponge_meme('stop Making spongebob Memes!'))
+# StOp mAkInG SpOnGeBoB MeMeS!
