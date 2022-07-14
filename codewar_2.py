@@ -1,3 +1,6 @@
+import re
+
+
 def angle(n):
     """7 kyu Sum of angles"""
     return (n - 2) * 180
@@ -51,3 +54,21 @@ assert (find_longest('The quick white fox jumped around the massive dog')) == 7
 def find_average(numbers):
     """8 kyu Calculate average"""
     return sum(numbers) / len(numbers)
+
+
+def frame(balls):
+    """6 kyu Alex & snooker: points earned."""
+    trd = re.findall(r'[A-Za-z]+|\d+', balls)
+    return trd
+
+
+balls = "R15Bk16YGBnBeP"
+print(frame(balls))
+
+
+def alphanumeric(password):
+    """Not very secure"""
+    res = re.match('^[\da-zA-Z]+$', password)
+    if res:
+        return True
+    return False
