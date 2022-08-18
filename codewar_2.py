@@ -92,3 +92,38 @@ def well(arr):
 assert well([['bad', 'bAd', 'bad'], ['bad', 'bAd', 'bad'], ['bad', 'bAd', 'bad']]) == 'Fail!'
 assert well([['gOOd', 'bad', 'BAD', 'bad', 'bad'], ['bad', 'bAd', 'bad'], ['GOOD', 'bad', 'bad', 'bAd']]) == 'Publish!'
 assert well([['gOOd', 'bAd', 'BAD', 'bad', 'bad', 'GOOD'], ['bad'], ['gOOd', 'BAD']]) == 'I smell a series!'
+
+
+def get_sum(a, b):
+    """7 kyu Beginner Series #3 Sum of Numbers"""
+    res = []
+    if a == b:
+        return a
+    elif a < b:
+        for i in range(a, b + 1):
+            res.append(i)
+        return sum(res)
+    else:
+        for i in range(b, a + 1):
+            res.append(i)
+        return sum(res)
+
+
+assert (get_sum(0, 1)) == 1
+assert (get_sum(0, -1)) == -1
+
+
+def strCount(string, letter):
+    """8 kyu All Star Code Challenge #18"""
+    return string.count(letter)
+
+
+def capitals(word):
+    res = []
+    for i, v in enumerate(word):
+        if v.isupper():
+            res.append(i)
+    return res
+
+
+assert (capitals('CodEWaRs')) == [0, 3, 4, 6]
