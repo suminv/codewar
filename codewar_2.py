@@ -127,3 +127,39 @@ def capitals(word):
 
 
 assert (capitals('CodEWaRs')) == [0, 3, 4, 6]
+
+
+def josephus(items, k):
+    """5 kyu Josephus Permutation"""
+    i, ys = 0, []
+    while len(items) > 0:
+        i = (i + k - 1) % len(items)
+        ys.append(items.pop(i))
+    return ys
+
+
+def sum_digits(number):
+    """7 kyu Summing a number's digits"""
+    return sum(int(digit) for digit in str(abs(number)))
+
+
+assert sum_digits(10) == 1
+assert sum_digits(99) == 18
+assert sum_digits(-32) == 5
+
+
+def validate_pin(pin):
+    """7 kyu Regex validate PIN code"""
+    return pin.isdigit() and (len(pin) == 4 or len(pin) == 6)
+
+
+def validate_pin_reg(pin):
+    """
+        \d only digits
+        {} = number of digits with \d
+        | = or
+    """
+    if re.fullmatch("\d{4}|\d{6}", pin):
+        return True
+    else:
+        return False
