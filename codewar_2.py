@@ -1,5 +1,5 @@
 import re
-
+import string
 
 def angle(n):
     """7 kyu Sum of angles"""
@@ -163,3 +163,41 @@ def validate_pin_reg(pin):
         return True
     else:
         return False
+
+
+def sequence_sum(begin_number, end_number, step):
+    """7 kyu Sum of a sequence"""
+    return sum(res for res in range(begin_number, end_number + 1, step))
+
+
+assert sequence_sum(2, 6, 2) == 12
+assert sequence_sum(16, 15, 3) == 0
+
+
+def reverse_letter(s):
+    """7 kyu Simple Fun #176: Reverse Letter"""
+    alpha = string.ascii_letters
+    res = ''
+
+    for letter in s:
+        if letter in alpha:
+            res += letter
+    return res[::-1]
+
+
+assert reverse_letter("krish21an") == "nahsirk"
+
+
+def increment_string(strng):
+    """ 5 kyu String incrementer"""
+    head = strng.rstrip('0123456789')
+    tail = strng[len(head):]
+    if tail == "":
+        return strng + "1"
+    return head + str(int(tail) + 1).zfill(len(tail))
+
+
+# "foobar002"
+
+
+assert (increment_string("foobar001")) == "foobar002"
