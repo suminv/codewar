@@ -201,3 +201,36 @@ def increment_string(strng):
 
 
 assert (increment_string("foobar001")) == "foobar002"
+
+
+def sort_by_length(arr):
+    """7 kyu Sort array by string length"""
+    return sorted(arr, key=len)
+
+
+def combat(health, damage):
+    """8 kyu Grasshopper - Terminal game combat function"""
+    if health > damage:
+        return health - damage
+    return 0
+
+
+def is_pangram(s):
+    """6 kyu Detect Pangram"""
+    del_symbol = '0123456789!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~ '
+    res = ''
+    for i in s.lower():
+        if i not in del_symbol:
+            res += i
+    return len(''.join(set(res))) == 26
+
+
+assert is_pangram("The quick, brown fox jumps over the lazy dog!") is True
+assert is_pangram("1bcdefghijklmnopqrstuvwxyz") is False
+
+
+def dna_to_rna(dna):
+    """8 kyu DNA to RNA Conversion"""
+    if 'T' in dna:
+        return dna.replace("T", 'U')
+    return dna
