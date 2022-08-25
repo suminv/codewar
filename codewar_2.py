@@ -234,3 +234,23 @@ def dna_to_rna(dna):
     if 'T' in dna:
         return dna.replace("T", 'U')
     return dna
+
+
+"""8 kyu Grasshopper - Messi Goals"""
+la_liga_goals = 43
+champions_league_goals = 10
+copa_del_rey_goals = 5
+total_goals = la_liga_goals + champions_league_goals + copa_del_rey_goals
+
+
+def sum_two_smallest_numbers(numbers):
+    """7 kyu Sum of two lowest positive integers"""
+    return sum(sorted(numbers)[:2])
+
+
+assert sum_two_smallest_numbers([7, 15, 12, 18, 22]) == 19
+
+
+def greet_2(name, owner):
+    """8 kyu Grasshopper - Personalized Message"""
+    return f'Hello guest' if name != owner else f'Hello boss'
