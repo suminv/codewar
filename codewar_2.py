@@ -1,6 +1,7 @@
 import re
 import string
 
+
 def angle(n):
     """7 kyu Sum of angles"""
     return (n - 2) * 180
@@ -254,3 +255,38 @@ assert sum_two_smallest_numbers([7, 15, 12, 18, 22]) == 19
 def greet_2(name, owner):
     """8 kyu Grasshopper - Personalized Message"""
     return f'Hello guest' if name != owner else f'Hello boss'
+
+
+def multi_table(number):
+    """8 kyu Multiplication table for number"""
+    res = ''
+    for i in range(1, 11):
+        res += f'{i} * {number} = {i * number}\n'
+    return res.strip()
+
+
+def remove_url_anchor(url):
+    """7 kyu Remove anchor from URL"""
+    return url.split('#')[0]
+
+
+assert remove_url_anchor("www.codewars.com/katas/?page=1#about") == "www.codewars.com/katas/?page=1"
+
+
+def likes(names):
+    """6 kyu Who likes it?"""
+    if len(names) == 0:
+        return 'no one likes this'
+    elif len(names) == 1:
+        return f'{names[0]} likes this'
+    elif len(names) == 2:
+        return f'{names[0]} and {names[1]} like this'
+    elif len(names) == 3:
+        return f'{names[0]}, {names[1]} and {names[2]} like this'
+    else:
+        return f'{names[0]}, {names[1]} and {len(names) - 2} others like this'
+
+
+assert likes(['Peter']) == 'Peter likes this'
+assert likes([]) == 'no one likes this'
+assert likes(['Alex', 'Jacob', 'Mark', 'Max']) == 'Alex, Jacob and 2 others like this'
