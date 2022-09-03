@@ -1,3 +1,4 @@
+import math
 import re
 import string
 
@@ -290,3 +291,33 @@ def likes(names):
 assert likes(['Peter']) == 'Peter likes this'
 assert likes([]) == 'no one likes this'
 assert likes(['Alex', 'Jacob', 'Mark', 'Max']) == 'Alex, Jacob and 2 others like this'
+
+
+def small_enough(array, limit):
+    """7 kyu Small enough? - Beginner"""
+    return max(array) <= limit
+
+
+def grow(arr):
+    """8 kyu Beginner - Reduce but Grow"""
+    return math.prod(arr)
+
+
+assert grow([1, 2, 3]) == 6
+
+
+def capitalize(s):
+    """7 kyu Alternate capitalization"""
+    res_odd = []
+    for i in range(len(s)):
+        if i % 2 == 0:
+            res_odd.append(s[i].upper())
+        else:
+            res_odd.append(s[i])
+    odd = ''.join(res_odd)
+    even = odd.swapcase()
+
+    return [odd, even]
+
+
+assert capitalize('abcdef') == ['AbCdEf', 'aBcDeF']
