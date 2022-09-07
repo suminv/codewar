@@ -1,6 +1,7 @@
 import math
 import re
 import string
+from functools import reduce
 
 
 def angle(n):
@@ -321,3 +322,37 @@ def capitalize(s):
 
 
 assert capitalize('abcdef') == ['AbCdEf', 'aBcDeF']
+
+
+def descending_order(num):
+    """7 kyu Descending Order"""
+    return int(''.join((sorted(str(num), reverse=True))))
+
+
+assert descending_order(123456789) == 987654321
+assert descending_order(1201) == 2110
+
+
+def order(words):
+    """ 6 kyu Your order, please"""
+    return ' '.join(sorted(words.split(), key=lambda w: sorted(w)))
+
+
+assert order("is2 Thi1s T4est 3a") == "Thi1s is2 3a T4est"
+
+
+def is_palindrome(string):
+    """8 kyu Palindrome Strings"""
+    return str(string)[::-1] == str(string)
+
+
+assert is_palindrome("anna") is True
+assert is_palindrome("walter") is False
+
+
+def flatten_and_sort(array):
+    """7 kyu Flatten and sort an array"""
+    return sorted(reduce(lambda a, b: a + b, array))
+
+
+assert (flatten_and_sort([[1, 3, 5], [100], [2, 4, 6]])) == [1, 2, 3, 4, 5, 6, 100]
