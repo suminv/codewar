@@ -356,3 +356,13 @@ def flatten_and_sort(array):
 
 
 assert (flatten_and_sort([[1, 3, 5], [100], [2, 4, 6]])) == [1, 2, 3, 4, 5, 6, 100]
+
+
+def how_many_light_sabers_do_you_own(name=""):
+    """8 kyu How many lightsabers do you own?"""
+    return 18 if name == "Zach" else 0
+
+
+assert how_many_light_sabers_do_you_own("Zach") == 18
+assert how_many_light_sabers_do_you_own() == 0
+assert how_many_light_sabers_do_you_own("zach") == 0
