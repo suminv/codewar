@@ -366,3 +366,24 @@ def how_many_light_sabers_do_you_own(name=""):
 assert how_many_light_sabers_do_you_own("Zach") == 18
 assert how_many_light_sabers_do_you_own() == 0
 assert how_many_light_sabers_do_you_own("zach") == 0
+
+
+def mango(quantity, price):
+    """ 8kyu Price of Mangoes"""
+    return (quantity - quantity // 3) * price
+
+
+assert (mango(3, 3)) == 6
+assert (mango(9, 5)) == 30
+
+
+def create_array(n):
+    res = []
+    i = 1
+    while i <= n:
+        res.append(i)
+        i += 1
+    return res
+
+
+assert (create_array(4)) == [1, 2, 3, 4]
