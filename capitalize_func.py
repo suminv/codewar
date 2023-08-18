@@ -12,4 +12,4 @@ def capitalize(s):
     return [odd, even]
 
 
-assert capitalize('abc
+assert capitalize('abc')
