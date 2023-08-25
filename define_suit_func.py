@@ -6,6 +6,3 @@ def define_suit(card):
         'S': 'spades',
     }
     return val[card[-1]]
-
-
-assert
