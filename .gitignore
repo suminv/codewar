@@ -2,3 +2,5 @@ venv/
 .idea/
 .mypy_cache/
 .gitignore
+.DS_Store
+
