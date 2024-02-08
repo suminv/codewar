@@ -8,4 +8,4 @@ def abbrev_name(name):
     return f"{first}.{last}"
 
 
-abbrev_name("Sam Harris")
+print(abbrev_name("Sam Harris"))
