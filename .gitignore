@@ -3,4 +3,5 @@ venv/
 .mypy_cache/
 .gitignore
 .DS_Store
+/ipython_file/
 
