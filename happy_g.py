@@ -1,9 +1,13 @@
+from _typeshed import SupportsAdd
 import re
 
 
 def happy_g(st):
-    return bool(re.search(r"gg", st))
+    if re.search(r'(?<!g)g(?!g)', st):
+        return False
+    return True
+
 
 
 assert happy_g("gg0gg3gg0gg") is True
-assert happy_g("gg0gg3gg0gg") is False
+assert happy_g("ggg ggg g ggg") is False
