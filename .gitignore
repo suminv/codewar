@@ -4,4 +4,4 @@ venv/
 .gitignore
 .DS_Store
 /ipython_file/
-
+__pycache__/
